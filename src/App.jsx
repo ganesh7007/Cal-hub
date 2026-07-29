@@ -1364,14 +1364,7 @@ const CyberBlogs = () => {
           </div>
         </div>
 
-        <div className="blogs-graphic">
-          <div className="laptop-wireframe neon-box">
-            <div className="screen-content text-neon">
-              <FileText size={60} className="glow-text" />
-            </div>
-            <div className="keyboard"></div>
-          </div>
-        </div>
+        {/* removed decorative laptop-wireframe to reduce clutter on small screens */}
       </div>
 
       <div className="blogs-layout">

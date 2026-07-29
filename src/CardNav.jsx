@@ -129,6 +129,19 @@ const CardNav = ({
     }
   };
 
+  // Lock background scroll when menu is open
+  useLayoutEffect(() => {
+    if (isExpanded) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isExpanded]);
+
   const setCardRef = i => el => {
     if (el) cardsRef.current[i] = el;
   };

@@ -379,6 +379,87 @@ img {
   }
 }
 
+/* Extra small screens: reduce widths, eliminate horizontal overflow, and tighten spacing */
+@media (max-width: 420px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .main-content {
+    padding: 0.6rem 0.5rem;
+  }
+
+  .page-container,
+  .hero-section,
+  .hero-content,
+  .hero-graphic,
+  .live-threat-feed,
+  .neon-box,
+  .impact-main,
+  .blogs-right-col,
+  .card-nav-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  .title-main {
+    font-size: 1.6rem;
+    line-height: 1.1;
+  }
+
+  .hero-description,
+  .subtitle-desc,
+  .section-title {
+    font-size: 0.95rem;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary,
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .neon-box,
+  .nav-card,
+  .category-card,
+  .blog-card,
+  .stat-item,
+  .kpi-card {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .hero-img-graphic {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .grid-4, .grid-3, .grid-5-icons, .featured-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+  }
+
+  .card-nav-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .main-content { padding: 0.5rem; }
+  .title-main { font-size: 1.4rem; }
+  .hero-description, .section-title { font-size: 0.9rem; }
+  .brand-text h1 { font-size: 1.2rem; }
+  .brand-text span { font-size: 0.6rem; }
+  .nav-link { font-size: 0.8rem; padding: 0.25rem 0.5rem; }
+}
+
 
 /* --- Original App.css --- */
 
@@ -3130,4 +3211,24 @@ img {
   0% { left: -150vw; transform: translateY(-50%) rotate(45deg); opacity: 0; }
   20% { left: 10px; transform: translateY(-50%) rotate(0deg); opacity: 1; }
   100% { left: -150vw; transform: translateY(-50%) rotate(-15deg); opacity: 1; }
+}
+
+/* Ensure page content is not hidden under the fixed CardNav */
+main.main-content {
+  /* default top padding to account for nav (60px) + card-nav top offset (1rem) */
+  padding-top: calc(60px + 1rem);
+}
+
+@media (max-width: 420px) {
+  /* smaller screens: tighten a little */
+  main.main-content {
+    padding-top: calc(60px + 0.5rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  /* larger screens: give slightly more breathing room */
+  main.main-content {
+    padding-top: calc(60px + 1.5rem);
+  }
 }
