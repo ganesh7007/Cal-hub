@@ -100,6 +100,19 @@
 }
 
 /* Media Queries */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 @media (max-width: 1200px) {
   .grid-sidebar {
     grid-template-columns: 1fr;
@@ -110,13 +123,6 @@
 }
 
 @media (max-width: 768px) {
-  .grid-3, .grid-4 {
-    grid-template-columns: 1fr;
-  }
-  .title-main {
-    font-size: 2rem;
-  }
-
   .main-content {
     padding: 1rem;
   }
@@ -126,30 +132,85 @@
   .hero-content,
   .hero-graphic,
   .live-threat-feed,
-  .neon-box {
+  .neon-box,
+  .impact-nav,
+  .impact-main,
+  .blogs-right-col {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
   }
 
-  .navbar {
+  .title-main {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  .subtitle-desc,
+  .hero-description {
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+    line-height: 1.3;
+  }
+
+  .grid-3,
+  .grid-4,
+  .categories-grid,
+  .stats-grid,
+  .featured-grid,
+  .category-icons-grid,
+  .impact-kpi-grid,
+  .impact-details-row,
+  .circular-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .grid-sidebar,
+  .ta-content-layout,
+  .trend-content-layout,
+  .blogs-layout,
+  .newsletter-banner {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
     padding: 1rem 0 1.25rem;
   }
 
   .navbar-brand {
     padding-left: 0;
     justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+    width: 100%;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    padding-bottom: 0.35rem;
+    white-space: nowrap;
   }
 
   .hero-section {
     grid-template-columns: 1fr;
     gap: 1.25rem;
-  }
-
-  .hero-description {
-    max-width: 100%;
   }
 
   .hero-actions {
@@ -158,13 +219,163 @@
   }
 
   .hero-actions .btn-primary,
-  .hero-actions .btn-secondary {
+  .hero-actions .btn-secondary,
+  .btn-primary,
+  .btn-secondary {
     width: 100%;
+    justify-content: center;
+  }
+
+  .ta-stats-row,
+  .trend-stats-row,
+  .blogs-stats-row,
+  .footer-actions,
+  .banner-perks {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .ta-stat-badge,
+  .trend-stat-badge,
+  .blog-stat {
+    width: 100%;
+  }
+
+  .threat-item {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .threat-meta {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .attack-modal-content,
+  .blog-modal-content {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .modal-header,
+  .modal-body {
+    padding: 1rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .modal-body {
+    gap: 1rem;
+  }
+
+  .horizontal-timeline {
+    padding: 1rem;
+  }
+
+  .ht-items {
+    min-width: 0;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .ht-item {
+    width: 100%;
+    align-items: flex-start;
+    padding-left: 0.75rem;
+  }
+
+  .ht-line {
+    display: none;
+  }
+
+  .trend-incident-list li {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .impact-charts-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .donut-chart-container {
+    flex-direction: column;
+    gap: 1rem;
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  .impact-nav {
+    position: relative;
+    top: auto;
+  }
+
+  .impact-footer {
+    padding: 1rem;
+  }
+
+  .blog-card-meta,
+  .blog-card h4,
+  .blog-card p,
+  .blog-tags,
+  .read-more {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .banner-form {
+    flex-direction: column;
+  }
+
+  .banner-input,
+  .banner-btn {
+    width: 100%;
+  }
+
+  .banner-content p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 0.75rem;
+  }
+
+  .title-main {
+    font-size: 1.7rem;
+  }
+
+  .navbar-brand .brand-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .navbar-brand .brand-text span {
+    font-size: 0.65rem;
   }
 
   .btn-primary,
   .btn-secondary {
-    justify-content: center;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .threat-item {
+    padding: 0.85rem;
+  }
+
+  .section-title {
+    font-size: 1.05rem;
+  }
+
+  .ta-stat-badge,
+  .trend-stat-badge,
+  .blog-stat {
+    padding: 0.9rem 1rem;
   }
 }
 
@@ -389,6 +600,7 @@
   letter-spacing: 1px;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid transparent;
+  text-decoration: none;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -415,8 +627,26 @@
 }
 
 @media (max-width: 1024px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 0 1.25rem;
+  }
+
   .navbar-links {
-    display: none; /* In a real app, we'd add a hamburger menu here */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+    width: 100%;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding-bottom: 0.35rem;
+    white-space: nowrap;
   }
 }
 

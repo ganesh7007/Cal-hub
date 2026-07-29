@@ -8,6 +8,8 @@ import { trendingDetails } from './data/trendingDetails';
 import { impactDetailsData } from './data/impactDetails';
 import { blogContents } from './data/blogContent';
 import './App.css';
+import './CardNav.css';
+import CardNav from './CardNav';
 import { Activity, AlertOctagon, AlertTriangle, ArrowDownCircle, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Briefcase, Bug, Calendar, CheckCircle, ChevronDown, ChevronRight, ChevronUp, Clock, Cloud, CloudLightning, Code, Coins, Cpu, Crosshair, Database, DollarSign, FileText, Fingerprint, Gavel, Globe, Home as HomeIcon, Info, Key, Link2, Lock, LockKeyhole, MailWarning, MonitorOff, RefreshCcw, Search, Shield, ShieldAlert, ShieldCheck, Skull, Smartphone, Star, Target, Terminal, TrendingDown, UserX, Users, WifiOff, X, ZoomIn, ZoomOut } from 'lucide-react';
 
 
@@ -58,35 +60,52 @@ const CyberLoader = ({ onComplete }) => {
 
 
 const Navbar = () => {
+  const navItems = [
+    {
+      label: 'Explore',
+      bgColor: '#0f1712',
+      textColor: '#e0ffe0',
+      links: [
+        { label: 'Home', href: '/', ariaLabel: 'Go to home page' },
+        { label: 'Traditional Attacks', href: '/traditional', ariaLabel: 'View traditional attacks' },
+        { label: 'Trending Attacks', href: '/trending', ariaLabel: 'View trending attacks' }
+      ]
+    },
+    {
+      label: 'Impact',
+      bgColor: '#16231a',
+      textColor: '#e0ffe0',
+      links: [
+        { label: 'Impact Overview', href: '/impact', ariaLabel: 'View impact overview' },
+        { label: 'Global Statistics', href: '/impact', ariaLabel: 'See cyber impact statistics' },
+        { label: 'Case Studies', href: '/impact', ariaLabel: 'See impact case studies' }
+      ]
+    },
+    {
+      label: 'Learn',
+      bgColor: '#1d2d22',
+      textColor: '#e0ffe0',
+      links: [
+        { label: 'Cyber Blogs', href: '/blogs', ariaLabel: 'Read cyber blogs' },
+        { label: 'Threat Feed', href: '/', ariaLabel: 'View live threat feed' },
+        { label: 'Security Tips', href: '/blogs', ariaLabel: 'Read security tips' }
+      ]
+    }
+  ];
+
   return (
-    <nav className="navbar">
-      <div className="navbar-brand">
-        <img src={logoImg} alt="CAL Hub Logo" className="brand-icon-img" />
-        <div className="brand-text">
-          <h1>CAL Hub</h1>
-          <span>Cyber Attack Learning Hub</span>
-        </div>
-      </div>
-
-      <div className="navbar-links">
-        <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-          <HomeIcon size={16} /> Home
-        </NavLink>
-        <NavLink to="/traditional" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-          <Activity size={16} /> Traditional Attacks
-        </NavLink>
-        <NavLink to="/trending" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-          <ShieldAlert size={16} /> Trending Attacks
-        </NavLink>
-        <NavLink to="/impact" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-          <Activity size={16} /> Impact
-        </NavLink>
-        <NavLink to="/blogs" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-          <FileText size={16} /> Cyber Blogs
-        </NavLink>
-      </div>
-
-    </nav>
+    <header className="navbar-shell">
+      <CardNav
+        logo={logoImg}
+        logoAlt="CAL Hub Logo"
+        items={navItems}
+        baseColor="#030a05"
+        menuColor="#00ff41"
+        buttonBgColor="#00ff41"
+        buttonTextColor="#030a05"
+        ease="power3.out"
+      />
+    </header>
   );
 };
 
@@ -1561,13 +1580,14 @@ const CyberBlogs = () => {
 // Main App Component
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const routerBase = import.meta.env.BASE_URL || '/';
 
   if (isLoading) {
     return <CyberLoader onComplete={() => setIsLoading(false)} />;
   }
 
   return (
-    <Router>
+    <Router basename={routerBase}>
       <div className="app-container">
         <Navbar />
         <main className="main-content">
